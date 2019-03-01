@@ -15,7 +15,7 @@ class Cipher(QtWidgets.QDialog, scytaleDesign.Ui_AtbashForm):
         key = self.get_key()
         cols_sum = int((len(input_text) - 1) / key) + 1
         while len(input_text) != key*cols_sum:
-            input_text += "*"
+            input_text += "\xa0"
 
         for i in range(key):
             j = i
@@ -34,7 +34,7 @@ class Cipher(QtWidgets.QDialog, scytaleDesign.Ui_AtbashForm):
         for i in range(cols_sum):
             j = i
             while j < len(input_text):
-                if input_text[j] != "*":
+                if input_text[j] != "\xa0":
                     result += input_text[j]
                     j += cols_sum
                 else:

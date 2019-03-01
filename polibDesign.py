@@ -56,7 +56,7 @@ class Ui_AtbashForm(object):
 
     def retranslateUi(self, AtbashForm):
         _translate = QtCore.QCoreApplication.translate
-        AtbashForm.setWindowTitle(_translate("AtbashForm", "Скитала"))
+        AtbashForm.setWindowTitle(_translate("AtbashForm", "Квадрат Полибия"))
         self.inputLabel.setText(_translate("AtbashForm", "Исходный текст:"))
         self.encryptButton.setText(_translate("AtbashForm", "Зашифровать"))
         self.decryptButton.setText(_translate("AtbashForm", "Расшифровать"))
