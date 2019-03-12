@@ -7,7 +7,7 @@ class Cipher(QtWidgets.QDialog, atbashDesign.Ui_AtbashForm):
         super().__init__()
         self.rusABC = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
         self.rusABC_lower = self.rusABC.lower()
-        self.engABC = "ABCDEFGHIKLMNOPQRSTVXYZ"
+        self.engABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         self.engABC_lower = self.engABC.lower()
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
