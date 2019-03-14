@@ -8,6 +8,7 @@ class Cipher(QtWidgets.QDialog, GronsefaldDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
 
         self.rusABC = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
         self.rusABC_lower = self.rusABC.lower()
@@ -154,3 +155,10 @@ class Cipher(QtWidgets.QDialog, GronsefaldDesign.Ui_AtbashForm):
                 return self.show_msg()
         except:
             return self.show_msg()
+
+
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)

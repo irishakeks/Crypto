@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'atbash.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.3
+# Created by: PyQt5 UI code generator 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -34,6 +34,11 @@ class Ui_AtbashForm(object):
         self.decryptButton = QtWidgets.QPushButton(AtbashForm)
         self.decryptButton.setObjectName("decryptButton")
         self.horizontalLayout.addWidget(self.decryptButton)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.swapButton = QtWidgets.QPushButton(AtbashForm)
+        self.swapButton.setObjectName("swapButton")
+        self.horizontalLayout.addWidget(self.swapButton)
         self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
         self.outputLabel = QtWidgets.QLabel(AtbashForm)
         font = QtGui.QFont()
@@ -57,31 +62,6 @@ class Ui_AtbashForm(object):
         self.inputLabel.setText(_translate("AtbashForm", "Исходный текст:"))
         self.encryptButton.setText(_translate("AtbashForm", "Зашифровать"))
         self.decryptButton.setText(_translate("AtbashForm", "Расшифровать"))
+        self.swapButton.setText(_translate("AtbashForm", "Swap"))
         self.outputLabel.setText(_translate("AtbashForm", "Результат:"))
-
-        # def encrypt(self):
-        #     input_text = self.textEdit.toPlainText()
-        #     result = [""] * (len((input_text)) + 1)
-        #     symbols_sum = int(len(input_text))
-        #     key = 3  # strings
-        #     cols_sum = int(((symbols_sum - 2) / key) // 1) + 1
-        #     print("n = ", key, " m = ", cols_sum)
-        #
-        #     for i in range(symbols_sum):
-        #         index = int((key * (i % cols_sum) + (i // cols_sum)))
-        #         result[index] = input_text[i]
-        #
-        #     self.textBrowser.setPlainText(" ".join(str(x) for x in result))
-        #
-        # def decrypt(self):
-        #     input_text = self.textEdit.toPlainText()
-        #     result = [""] * (len((input_text)) + 1)
-        #     symbols_sum = int(len(input_text))
-        #     cols_sum = 3  # strings
-        #     key = int(((symbols_sum - 2) / cols_sum) // 1) + 1
-        #     print("n = ", key, " m = ", cols_sum)
-        #
-        #     for i in range(symbols_sum):
-        #         index = int((key * (i % cols_sum) + (i // cols_sum)))
-        #         result[index] = input_text[i]
 

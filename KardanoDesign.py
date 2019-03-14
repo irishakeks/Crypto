@@ -28,15 +28,20 @@ class Ui_AtbashForm(object):
         self.gridLayout.addWidget(self.textEdit, 1, 0, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-#        self.keyEdit = QtWidgets.QLineEdit(AtbashForm)
-#        self.keyEdit.setPlaceholderText("Enter key")
-#        self.horizontalLayout.addWidget(self.keyEdit)
+        self.keyEdit = QtWidgets.QLineEdit(AtbashForm)
+        self.keyEdit.setPlaceholderText("Enter key")
+        self.horizontalLayout.addWidget(self.keyEdit)
         self.encryptButton = QtWidgets.QPushButton(AtbashForm)
         self.encryptButton.setObjectName("encryptButton")
         self.horizontalLayout.addWidget(self.encryptButton)
         self.decryptButton = QtWidgets.QPushButton(AtbashForm)
         self.decryptButton.setObjectName("decryptButton")
         self.horizontalLayout.addWidget(self.decryptButton)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.swapButton = QtWidgets.QPushButton(AtbashForm)
+        self.swapButton.setObjectName("swapButton")
+        self.horizontalLayout.addWidget(self.swapButton)
         self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
         self.outputLabel = QtWidgets.QLabel(AtbashForm)
         font = QtGui.QFont()
@@ -56,10 +61,11 @@ class Ui_AtbashForm(object):
 
     def retranslateUi(self, AtbashForm):
         _translate = QtCore.QCoreApplication.translate
-        AtbashForm.setWindowTitle(_translate("AtbashForm", "Решетка Кардано"))
+        AtbashForm.setWindowTitle(_translate("AtbashForm", "Шифр Ришелье"))
         self.inputLabel.setText(_translate("AtbashForm", "Исходный текст:"))
         self.encryptButton.setText(_translate("AtbashForm", "Зашифровать"))
         self.decryptButton.setText(_translate("AtbashForm", "Расшифровать"))
+        self.swapButton.setText(_translate("AtbashForm", "Swap"))
         self.outputLabel.setText(_translate("AtbashForm", "Результат:"))
 
         # def encrypt(self):

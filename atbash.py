@@ -12,6 +12,7 @@ class Cipher(QtWidgets.QDialog, atbashDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
 
     def encrypt(self):
         input_text = self.textEdit.toPlainText()
@@ -39,6 +40,10 @@ class Cipher(QtWidgets.QDialog, atbashDesign.Ui_AtbashForm):
     def decrypt(self):
         self.encrypt()
 
-
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)
 
 

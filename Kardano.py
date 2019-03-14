@@ -8,6 +8,7 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
         self.index = 0
 
         self.len_text = 0
@@ -40,34 +41,34 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
         result = ""
         alf = self.choose_alf(input_text)
 
-        xyinya = 0
+        count = 0
 
         while shtuka > 0:
 
             if self.index != self.len_text:
-                result = self.fgrille0(input_text, result, alf, xyinya)
+                result = self.fgrille0(input_text, result, alf, count)
 
             if self.index != self.len_text:
-                result = self.fgrille90(result, input_text, xyinya)
+                result = self.fgrille90(result, input_text, count)
 
             if self.index != self.len_text:
-                result = self.fgrille180(result, input_text, xyinya)
+                result = self.fgrille180(result, input_text, count)
 
             if self.index != self.len_text:
-                result = self.fgrille270(result, input_text, xyinya)
+                result = self.fgrille270(result, input_text, count)
             shtuka = shtuka - 64
-            xyinya = xyinya + 64
+            count = count + 64
 
         self.textBrowser.setPlainText("".join(x for x in result))
 
-    def fgrille0(self,input_text, result, alf, xyinya):
+    def fgrille0(self,input_text, result, alf, count):
 
         for letter in self.grille0:
 
             if letter == 1:  # если символ из решетки единица
 
                 # если входной текст не закончился и остаток от деления длины результата на 64 не 0 или длина рез 0
-                if self.index != self.len_text and (len(result)%64 != 0 or len(result) == xyinya):
+                if self.index != self.len_text and (len(result)%64 != 0 or len(result) == count):
                     symbol = self.take_symb(input_text)  # берем символ из вх текста и пишем его в результат
                     result += symbol
 
@@ -76,7 +77,7 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
                     result += self.rand_symb(alf)
 
                 # если текст закончился и в результате 64 символа
-                elif self.index == self.len_text and (len(result)%64 != 0 or len(result) == xyinya):
+                elif self.index == self.len_text and (len(result)%64 != 0 or len(result) == count):
                     return result
 
                 # а если текст не закончился, остаток от деления длины рез на 64 не 0
@@ -84,7 +85,7 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
                     return result
 
             # если символ из решетки 0, входной текст еще есть и остаток от деления дл рез на 64 не 0 или рез пустой
-            elif letter == 0 and self.index != self.len_text and (len(result)%64 != 0 or len(result) == xyinya):
+            elif letter == 0 and self.index != self.len_text and (len(result)%64 != 0 or len(result) == count):
                 result += self.rand_symb(alf)  # пишем рандомный символ
 
             elif letter == 0 and self.index == self.len_text:  # если 0 и входного текста нет
@@ -93,7 +94,7 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
                 else:
                     return result
             # если  вх текст еще есть,
-            elif self.index != self.len_tex and (len(result)%64 != 0 or len(result) != xyinya):
+            elif self.index != self.len_tex and (len(result)%64 != 0 or len(result) != count):
                 return result
 
 
@@ -101,9 +102,9 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
 
 
 
-    def fgrille90(self, result,input_text, xyinya):
+    def fgrille90(self, result,input_text, count):
 
-        indx = xyinya
+        indx = count
         for letter in self.grille90:
             if letter == 1 and self.index != self.len_text:
                 result = self.rep(indx, self.take_symb(input_text), result)
@@ -111,8 +112,8 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
             indx += 1
         return result
 
-    def fgrille180(self, result,input_text, xyinya):
-        indx = xyinya
+    def fgrille180(self, result,input_text, count):
+        indx = count
         for letter in self.grille180:
             if letter == 1 and self.index != self.len_text:
                 result = self.rep(indx, self.take_symb(input_text), result)
@@ -125,9 +126,9 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
 
 
 
-    def fgrille270(self, result,input_text, xyinya):
+    def fgrille270(self, result,input_text, count):
 
-        indx = xyinya
+        indx = count
         for letter in self.grille270:
             if letter == 1 and self.index != self.len_text:
                 result = self.rep(indx, self.take_symb(input_text), result)
@@ -179,9 +180,6 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
 
     def decrypt(self):
 
-        # На входе строка шифртекста, нужно расшифровать
-        # Нужно делить на 64 симв, потом переставлять
-        #
         input_text = ""
         input_text = self.textEdit.toPlainText()
         self.index = 0
@@ -231,3 +229,9 @@ class Cipher(QtWidgets.QDialog, KardanoDesign.Ui_AtbashForm):
         self.msg.setText("Длина сообщения должна быть кратна 64!")
         self.msg.exec_()
         return -1
+
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)

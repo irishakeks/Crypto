@@ -12,7 +12,7 @@ class Cipher(QtWidgets.QDialog, caesarDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
-
+        self.swapButton.clicked.connect(self.swap)
     def encrypt(self):
         input_text = self.textEdit.toPlainText()
         result = ""
@@ -77,3 +77,8 @@ class Cipher(QtWidgets.QDialog, caesarDesign.Ui_AtbashForm):
         self.msg.exec_()
         return -1
 
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)

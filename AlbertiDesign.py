@@ -37,6 +37,11 @@ class Ui_AtbashForm(object):
         self.decryptButton = QtWidgets.QPushButton(AtbashForm)
         self.decryptButton.setObjectName("decryptButton")
         self.horizontalLayout.addWidget(self.decryptButton)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.swapButton = QtWidgets.QPushButton(AtbashForm)
+        self.swapButton.setObjectName("swapButton")
+        self.horizontalLayout.addWidget(self.swapButton)
         self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
         self.outputLabel = QtWidgets.QLabel(AtbashForm)
         font = QtGui.QFont()
@@ -60,6 +65,7 @@ class Ui_AtbashForm(object):
         self.inputLabel.setText(_translate("AtbashForm", "Исходный текст:"))
         self.encryptButton.setText(_translate("AtbashForm", "Зашифровать"))
         self.decryptButton.setText(_translate("AtbashForm", "Расшифровать"))
+        self.swapButton.setText(_translate("AtbashForm", "Swap"))
         self.outputLabel.setText(_translate("AtbashForm", "Результат:"))
 
         # def encrypt(self):

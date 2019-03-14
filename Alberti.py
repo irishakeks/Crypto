@@ -8,6 +8,7 @@ class Cipher(QtWidgets.QDialog, AlbertiDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
 
         self.outside_rus = 'АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЫыЪъЭэЮюЯя'
         self.outside_eng = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
@@ -89,3 +90,9 @@ class Cipher(QtWidgets.QDialog, AlbertiDesign.Ui_AtbashForm):
                 result += letter
 
         self.textBrowser.setPlainText("".join(x for x in result))
+
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)

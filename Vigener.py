@@ -8,6 +8,7 @@ class Cipher(QtWidgets.QDialog, VigenerDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
 
 
         self.rusABC = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" #33
@@ -175,7 +176,11 @@ class Cipher(QtWidgets.QDialog, VigenerDesign.Ui_AtbashForm):
         self.textBrowser.setPlainText("".join(x for x in result))
 
 
-
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)
 
     def get_key(self):
         key = self.keyEdit.text()

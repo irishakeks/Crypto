@@ -8,11 +8,12 @@ class Cipher(QtWidgets.QDialog, polibDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
 
-    def encrypt(self):
+    def encrypt(self):  # если зашифровка, передаем в функцию 1
         self.polib(1)
 
-    def decrypt(self):
+    def decrypt(self):  # если расшифровка, передаем в функцию -1
         self.polib(-1)
 
 
@@ -52,7 +53,6 @@ class Cipher(QtWidgets.QDialog, polibDesign.Ui_AtbashForm):
 
         alf_list = [upper_english, lower_english, upper_rus, lower_rus]
 
-
         result = ""
         for symbol in input_text:
             in_alf = False
@@ -70,25 +70,9 @@ class Cipher(QtWidgets.QDialog, polibDesign.Ui_AtbashForm):
 
         self.textBrowser.setPlainText("".join(x for x in result))
 
-
-
-
-
-
-        #self.alf(upper_english, input_text)
-        #self.alf(lower_english, input_text)
-        #self.alf(upper_rus, input_text)
-        #self.alf(lower_rus, input_text)
-
-
-
-
     def alf(self, alphabet, symbol, koef):
-            # print(symbol)
             for string in alphabet:
-                # print(string)
                 for element in string:
-                    # print(element)
                     if koef == 1:
                         symbol1 = self.exceptions_enc(symbol)
                     else:
@@ -101,19 +85,7 @@ class Cipher(QtWidgets.QDialog, polibDesign.Ui_AtbashForm):
                         symbol1 = alphabet[indexU+koef][index]
                         return symbol1
 
-
-                #         result += symbol1
-                #         flag = True
-                #         # print(symbol1, element)
-                #         # print("result=", result)
-                #     if flag: break
-                # if flag: break
-
-
-
-
-
-    def exceptions_dec(self, symbol):
+    def exceptions_dec(self, symbol):  # исключения для расшифровки
         if symbol == "A":
             return "Z"
         elif symbol == "a":
@@ -161,7 +133,7 @@ class Cipher(QtWidgets.QDialog, polibDesign.Ui_AtbashForm):
 
         return False
 
-    def exceptions_enc(self, symbol):
+    def exceptions_enc(self, symbol):  # исключения для зашифровки
         if symbol == "Z":
             return "A"
         elif symbol == "z":
@@ -181,6 +153,8 @@ class Cipher(QtWidgets.QDialog, polibDesign.Ui_AtbashForm):
 
         return False
 
-
-
-
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)

@@ -8,15 +8,13 @@ class Cipher(QtWidgets.QDialog, RishelieDesign.Ui_AtbashForm):
         self.setupUi(self)  # Инициализация нашего дизайна
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
+        self.swapButton.clicked.connect(self.swap)
 
         self.eng = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'
         self.rus = 'АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЫыЪъЭэЮюЯя'
 
         self.grille = [0,0,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0]
 
-
-
-# popopopopopopopopopopopopopopopopo
     def encrypt(self):
 
         keys = ""
@@ -26,25 +24,15 @@ class Cipher(QtWidgets.QDialog, RishelieDesign.Ui_AtbashForm):
         input_text = self.textEdit.toPlainText()
 
         self.index = 0
-
         self.len_text = len(input_text)
 
         result = ""
         alf = self.choose_alf(input_text)
 
         result = self.change(result,alf, input_text, keys, 0)
-
         self.textBrowser.setPlainText("".join(x for x in result))
 
-
-    # 123 4567 89 10396
-    # str_list = str.split(splice)(" ")
-    # for str in str_list:
-    # int(el)
-
     def change(self, result,alf, input_text,keys, enc_dec):
-        #key1, key2, key3, key4, key5, key6, key7, key8 = keys.split(" ")
-        #keys = [key1, key2, key3, key4, key5, key6, key7, key8]
 
         list_keys_len = [3, 2, 4, 8, 5, 3, 7, 2]
 
@@ -201,3 +189,9 @@ class Cipher(QtWidgets.QDialog, RishelieDesign.Ui_AtbashForm):
         for i in tmp: # делаем из списка строку
             ttmp += i
         return ttmp
+
+    def swap(self):
+        input_text = self.textEdit.toPlainText()
+        tmp = self.textBrowser.toPlainText()
+        self.textBrowser.setPlainText(input_text)
+        self.textEdit.setPlainText(tmp)
