@@ -28,9 +28,7 @@ class Ui_AtbashForm(object):
         self.gridLayout.addWidget(self.textEdit, 1, 0, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.keyEdit = QtWidgets.QLineEdit(AtbashForm)
-        self.keyEdit.setPlaceholderText("Enter key")
-        self.horizontalLayout.addWidget(self.keyEdit)
+
         self.encryptButton = QtWidgets.QPushButton(AtbashForm)
         self.encryptButton.setObjectName("encryptButton")
         self.horizontalLayout.addWidget(self.encryptButton)
@@ -61,7 +59,7 @@ class Ui_AtbashForm(object):
 
     def retranslateUi(self, AtbashForm):
         _translate = QtCore.QCoreApplication.translate
-        AtbashForm.setWindowTitle(_translate("AtbashForm", "Шифр Ришелье"))
+        AtbashForm.setWindowTitle(_translate("AtbashForm", "Шифр Кардано"))
         self.inputLabel.setText(_translate("AtbashForm", "Исходный текст:"))
         self.encryptButton.setText(_translate("AtbashForm", "Зашифровать"))
         self.decryptButton.setText(_translate("AtbashForm", "Расшифровать"))

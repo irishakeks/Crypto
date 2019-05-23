@@ -42,6 +42,7 @@ class Cipher(QtWidgets.QDialog, RishelieDesign.Ui_AtbashForm):
 
         if len(input_text) != 57 and enc_dec == 1:
             self.show_msg()
+            return "Неверная длина введенного текста"
 
         if enc_dec == 1:
             for letter in self.grille:
@@ -132,7 +133,7 @@ class Cipher(QtWidgets.QDialog, RishelieDesign.Ui_AtbashForm):
         self.msg = QtWidgets.QMessageBox()
         self.msg.setText("Длина сообщения должна быть равна 57!")
         self.msg.exec_()
-        return -1
+      #  return -1
 
 
     def get_key(self):
