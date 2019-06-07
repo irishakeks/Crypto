@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtWidgets
 import mainDesign
 import atbash,scytale, caesar, polib, Kardano, Rishelie, Rishelie2, Gronsefald, Vigener, Pleifer, Hill, \
-    Vernam, Gammirovanie
+    Vernam, Gammirovanie, Cryptoanal1
 from Crypto import Alberti
 
 
@@ -12,10 +12,10 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.setupUi(self)  # Инициализация нашего дизайна
 
         self.ciphers_values = [atbash, scytale, caesar, polib, Kardano, Rishelie, Rishelie2, Alberti, Gronsefald,
-                               Vigener, Pleifer, Hill, Vernam, Gammirovanie]
+                               Vigener, Pleifer, Hill, Vernam, Gammirovanie, Cryptoanal1]
         self.ciphers_keys = ["Атбаш", "Скитала", "Цезаря", "Квадрат Полибия", "Решетка Кардано", "Шифр Ришелье",
                             "Шифр Ришелье 2.0", "Диск Альберти", "Шифр Гронсфельда", "Шифр Виженера", "Шифр Плейфера",
-                             "Криптoсистема Хилла", "Шифр Вернама", 'Метод гаммирования']
+                             "Криптoсистема Хилла", "Шифр Вернама", 'Метод гаммирования', "Частотный криптоанализ"]
         self.ciphers_dict = dict(zip(self.ciphers_keys, self.ciphers_values))
         self.cipherLlistWidget.addItems(self.ciphers_keys)
 
